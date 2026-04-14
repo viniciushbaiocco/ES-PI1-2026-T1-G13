@@ -1,23 +1,17 @@
 import mysql.connector
-
-
-def conectar_banco():
-    conexao = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Vinicius@1243",
-        database="lad_py"
-    )
-    return conexao
-
 def testar_conexao():
     try:
-        conexao = conectar_banco()
+        conexao = mysql.connector.connect(
+            host="localhost", #sua hospedagem de rede (localhost ou 127.0.0.1 por padrão)
+            user="root", #seu usuario no mysql server (root é o padrão por maquina, se nunca utilizou mysql server antes, deixe do jeito que está)
+            password="senha", #sua senha
+            database="lad_py" #não alterar, nome da database de banco.sql
+        )
         if conexao.is_connected():
             print("Conexao com o banco realizada com sucesso.")
-        conexao.close()
-    except mysql.connector.Error as erro:
-        print(erro)
-    return conexao
+            conexao.close()
+        else:
+            print("Nao foi possivel conectar com o banco.")
 
-testar_conexao()
+    except mysql.connector.Error as erro:
+        print("Erro ao conectar com o banco:", erro)
