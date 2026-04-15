@@ -33,3 +33,12 @@ CREATE TABLE votos (
     datetime_voto DATETIME NOT NULL,
     FOREIGN KEY (id_candidato) REFERENCES candidatos(id_candidato)
 );
+
+-- INSERT INTO partidos (partido, sigla) VALUES ('Partido Alpha', 'PA');
+-- INSERT INTO partidos (partido, sigla) VALUES ('Partido Beta', 'PB');
+
+-- INSERT INTO candidatos (candidato, numero_votacao, id_partido) VALUES ('Carlos Silva', 10, 1);
+-- INSERT INTO candidatos (candidato, numero_votacao, id_partido) VALUES ('Marina Souza', 20, 2);
+
+-- INSERT INTO eleitores (nome, titulo_eleitor, prefixo_cpf, cpf_cifrado, mesario, chave_acesso_cifrada, ja_votou)
+-- VALUES ('Joao Pereira', '123456789012', '1234', 'CPFTESTE001', TRUE, 'CHAVETESTE001', FALSE);
