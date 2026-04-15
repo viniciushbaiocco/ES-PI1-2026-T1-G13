@@ -1,6 +1,13 @@
-def menu_gerenciamento():
+def menu_gerenciamento(): 
+    """
+    gerenciamento de eleitores e candidatos
+    args:
+        none
+    returns:
+        none
+    """
     opcao = 0  #comecamos a opcao com 0 so para entrar no menu pela primeira vez
-    while opcao != 7: #  menu continua abrindo enquanto o usuario nao escolher a opcao de voltar
+    while opcao !=11: #menu continua abrindo enquanto o usuario nao escolher a opcao de voltar
         print("\n=== MENU GERENCIAMENTO ===")
         print("1 - Cadastrar eleitor")
         print("2 - Listar eleitores")
@@ -8,7 +15,11 @@ def menu_gerenciamento():
         print("4 - Editar eleitor")
         print("5 - Remover eleitor")
         print("6 - Cadastrar candidato")
-        print("7 - Voltar")
+        print("7 - Listar candidatos")
+        print("8 - Buscar candidato")
+        print("9 - Editar candidato")
+        print("10 - Remover candidato")
+        print("11 - Voltar")
         try: #tenta transformar o que o usuario digitou em numero
             opcao = int(input("Escolha uma opcao: "))
         except ValueError: #se o usuario digitar letra ou algo invalido, a opcao vira 0 (ValueError)
@@ -29,11 +40,26 @@ def menu_gerenciamento():
             case 6:
                 print("Cadastro de candidato ainda nao foi feito.")
             case 7:
+                print("Listagem de candidatos ainda nao foi feita.")
+            case 8:
+                print("Busca de candidato ainda nao foi feita.")
+            case 9:
+                print("Edicao de candidatos ainda nao foi feita.")
+            case 10:
+                print("Remocao de candidato ainda nao foi feita.")
+            case 11:
                 print("Voltando ao menu principal...")
             case _:
                 print("Opcao invalida.")
 
 def menu_abrir_votacao():
+    """
+    menu de abrir votação, identifica mesario e realiza a zerezima
+    args:
+        none
+    returns:
+        none
+    """
     opcao = 0
     while opcao != 3:
         print("\n=== ABRIR SISTEMA DE VOTACAO ===")
@@ -56,6 +82,13 @@ def menu_abrir_votacao():
                 print("Opcao invalida.")
 
 def menu_auditoria():
+    """
+    menu de auditoria da votação, exibe logs e protocolos
+    args:
+        none
+    returns:
+        none
+    """
     opcao = 0
     while opcao != 3:
         print("\n=== AUDITORIA DA VOTACAO ===")
@@ -78,6 +111,13 @@ def menu_auditoria():
                 print("Opcao invalida.")
 
 def menu_resultados():
+    """
+    resultados da votação
+    args: 
+        none
+    returns:
+        none
+    """
     opcao = 0
     while opcao != 5:
         print("\n=== RESULTADOS DA VOTACAO ===")
@@ -106,6 +146,13 @@ def menu_resultados():
                 print("Opcao invalida.")
 
 def menu_votacao():
+    """
+    menu principal de votação
+    args:
+        none
+    returns:
+        none
+    """
     opcao = 0
     while opcao != 4:
         print("\n=== MENU VOTACAO ===")
@@ -131,6 +178,13 @@ def menu_votacao():
                 print("Opcao invalida.")
 
 def menu_principal():
+    """
+    menu principal, onde todo o sistema roda
+    args:
+        none
+    returns:
+        none
+    """
     opcao = 0
     while opcao != 3:
         print("\n=== SISTEMA LAD.PY ===")
