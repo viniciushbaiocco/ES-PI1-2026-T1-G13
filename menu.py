@@ -33,9 +33,9 @@ def menu_gerenciamento():
                 titulo_eleitor=input("Título de eleitor:")
                 cpf=input("CPF:")
                 mesario=input("Mesário s/n:")
-                comando="INSERT INTO eleitores (nome,titulo_eleitor,cpf,mesario) VALUES (%s, %s, %s, %s)"
+                comando="INSERT INTO eleitores (nome,titulo_eleitor,cpf,mesario) VALUES (%s, %s, %s,%s)"
                 valores=(nome_completo,titulo_eleitor,cpf,mesario)
-                executar(comando,valores)adsadas
+                executar(comando,valores)
                 print("Cadastrado com sucesso!")
             case 2:
                 print("Listagem de eleitores ainda nao foi feita.")
@@ -46,7 +46,13 @@ def menu_gerenciamento():
             case 5:
                 print("Remocao de eleitor ainda nao foi feita.")
             case 6:
-                print("Cadastro de candidato ainda nao foi feito.")
+                nome_completo_candidato=input("Digite seu nome completo:")
+                numero_candidato=int(input("Seu número para votação:"))
+                id_partido=int(input("Informe o ID do partido:"""))
+                comando2="INSERT INTO candidatos (nome_completo_candidato,numero_candidato,id_partido) VALUES (%s, %s, %s)"
+                valores2=(nome_completo_candidato,numero_candidato,id_partido)
+                executar(comando2,valores2)
+                print("Cadastrado com sucesso!")
             case 7:
                 print("Listagem de candidatos ainda nao foi feita.")
             case 8:
