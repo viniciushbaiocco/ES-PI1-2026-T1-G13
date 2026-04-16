@@ -25,10 +25,18 @@ def menu_gerenciamento():
         except ValueError: #se o usuario digitar letra ou algo invalido, a opcao vira 0 (ValueError)
             opcao = 0
 
-        #a partir daqui o programa verifica qual numero foi escolhido
+        #a partir daqui o programa verifica qual numero foi escolhido   
+        from conexaobd import executar    
         match opcao:
             case 1:
-                print("Cadastro de eleitor ainda nao foi feito.")
+                nome_completo=input("Digite seu nome completo:")
+                titulo_eleitor=input("Título de eleitor:")
+                cpf=input("CPF:")
+                mesario=input("Mesário s/n:")
+                comando="INSERT INTO eleitores (nome,titulo_eleitor,cpf,mesario) VALUES (%s, %s, %s, %s)"
+                valores=(nome_completo,titulo_eleitor,cpf,mesario)
+                executar(comando,valores)adsadas
+                print("Cadastrado com sucesso!")
             case 2:
                 print("Listagem de eleitores ainda nao foi feita.")
             case 3:
@@ -205,3 +213,4 @@ def menu_principal():
                 print("Saindo...")
             case _:
                 print("Opcao invalida.")
+menu_principal()
