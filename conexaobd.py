@@ -15,3 +15,14 @@ def testar_conexao():
 
     except mysql.connector.Error as erro:
         print("Erro ao conectar com o banco:", erro)
+def executar(comando,valores):
+       conexao = mysql.connector.connect(
+            host="localhost", #sua hospedagem de rede (localhost ou 127.0.0.1 por padrão)
+            user="root", #seu usuario no mysql server (root é o padrão por maquina, se nunca utilizou mysql server antes, deixe do jeito que está)
+            password="senha", #sua senha
+            database="lad_py" #não alterar, nome da database de banco.sql
+        )
+       cursor=conexao.cursor()
+       cursor.execute(comando,valores)
+       conexao.commit
+       cursor.close
