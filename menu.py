@@ -49,9 +49,9 @@ def menu_gerenciamento():
                 nome_completo_candidato=input("Digite seu nome completo:")
                 numero_candidato=int(input("Seu número para votação:"))
                 id_partido=int(input("Informe o ID do partido:"""))
-                comando2="INSERT INTO candidatos (nome_completo_candidato,numero_candidato,id_partido) VALUES (%s, %s, %s)"
-                valores2=(nome_completo_candidato,numero_candidato,id_partido)
-                executar(comando2,valores2)
+                comando="INSERT INTO candidatos (nome_completo_candidato,numero_candidato,id_partido) VALUES (%s, %s, %s)"
+                valores=(nome_completo_candidato,numero_candidato,id_partido)
+                executar(comando,valores)
                 print("Cadastrado com sucesso!")
             case 7:
                 print("Listagem de candidatos ainda nao foi feita.")
