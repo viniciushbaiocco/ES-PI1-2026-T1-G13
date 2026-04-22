@@ -34,7 +34,7 @@ def menu_gerenciamento():
                 cpf=input("CPF:")                           #validção do cpf
                 cont=0                                      #assegura que o cpf tem todos os 11 dígitos, os quais devem ser apenas números
                 while cont!=11:                             #obs:o cont=0 dentro do while serve para reiniciar a contagem de dígitos após uma tentativa de digitação
-                    cont=0
+                    cont=0                                  #esta primeira parte verifica se há 11 dígitos, sendo eles apenas números reais
                     for k in range (len(cpf)):
                         if cpf[k]>="0" and cpf[k]<="9":
                             cont+=1
@@ -46,9 +46,57 @@ def menu_gerenciamento():
                             print("o cpf precisa ter 11 dígitos")
                         else:
                             print("utilize apenas números reais")
-                        cpf=input("CPF:")    
-                    if cont==11:
-                        print("válido")
+                        cpf=input("CPF:")
+                        cont = 0 
+                    else:                                                       #a partir desse "else", acontece a verificação matemática
+                        iguais=0                                                #em primeiro lugar, verifica-se se o cpf não possui todos os dígitos iguais
+                        for k in range (len(cpf)):                              #em segundo lugar, é verificado o primeiro dígito de verificação
+                            if cpf[k] == cpf[0]:                                #em terceiro lugar, é verificado o segundo dígito de verificação
+                                iguais+=1                                       #depois, os dígitos verificadores são comparados e então validados
+                        if iguais == 11:
+                            print("CPF inválido: números repetidos")
+                            cpf = input("CPF:")
+                            cont = 0
+                        else:
+                            soma1=0
+                            multiplicacao1=10
+                            for i in range(9):
+                                soma1+=int(cpf[i])*multiplicacao1
+                                i+=1
+                                multiplicacao1-=1
+                            resto1=soma1%11
+                            if resto1<2:
+                                first_verify=0
+                            else:
+                                first_verify=11-resto1
+                                if first_verify>=10:
+                                    first_verify=0
+
+                           
+                            soma2=0
+                            multiplicacao2=11
+                            for i in range(9):
+                                soma2+=int(cpf[i])*multiplicacao2
+                                i+=1
+                                multiplicacao2-=1
+                            soma2+=first_verify*2
+                            resto2=soma2%11
+                            if resto2<2:
+                                second_verify=0
+                            else:
+                                second_verify=11-resto2
+                                if second_verify>=10:
+                                    second_verify=0
+
+                            if first_verify == int(cpf[9]) and second_verify == int(cpf[10]):
+                                print("CPF válido!")
+                        
+                            else:
+                                print("CPF inválido: erro nos dígitos verificadores.")
+                                cpf = input("CPF: ")
+                                cont = 0
+
+
 
                 mesario=input("Mesário s/n:")
                 comando="INSERT INTO eleitores (nome,titulo_eleitor,cpf,mesario) VALUES (%s, %s, %s,%s)"
